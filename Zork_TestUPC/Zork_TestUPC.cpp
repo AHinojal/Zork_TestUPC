@@ -20,6 +20,11 @@ int main()
 		std::cout << ">";
 		std::cin >> command;
 
+		// Pasen lo que nos pasen, siempre lo tendremos en mayusculas
+		for (int i = 0; i < command.length(); i++) {
+			command[i] = toupper(command[i]);
+		}
+
 		if (command == "HELP") {
 			zorkWorld.showHelpComands();
 		}
