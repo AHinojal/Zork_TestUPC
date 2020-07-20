@@ -5,7 +5,7 @@ using namespace std;
 
 Room::Room(string name, string description) : Entity(name, description)
 {
-	//type = ROOM;
+	type = ROOM;
 }
 
 Room::~Room()

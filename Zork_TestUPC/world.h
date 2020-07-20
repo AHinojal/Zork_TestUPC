@@ -4,6 +4,7 @@
 class World {
 	public:
 		Room* actualRoom;
+		// Player* player;
 
 		World(); // Constructor por defecto
 		~World(); // Destructor

@@ -39,7 +39,7 @@ void World::startGame()
 {
 	string namePlayer;
 	std::cout << "Give me your name, hero!\n" << ">";
-	std::cin >> namePlayer;
+	std::getline(std::cin, namePlayer);
 	std::cout << "Welcome, " << namePlayer << "! Let's start the adventure!\n";
 	// TODO: Setear el nombre del jugador aqui;
 	this->actualRoom->showInfo();
@@ -54,6 +54,7 @@ void World::showHelpComands()
 	std::cout << "- SOLTAR" << " : " << "Eliminamos item del inventario" << "\n";
 	std::cout << "- IR [COORDENADA]" << " : " << "Movimiento del jugador. Tipo de coordenadas: NORTE, SUR, ESTE, OESTE" << "\n";
 	std::cout << "- DIALOGAR" << " : " << "Interaccion entre NPC y jugador" << "\n";
+	std::cout << "- INVENTARIO" << " : " << "Vemos los objetos que tiene el jugador" << "\n";
 	std::cout << "- QUIT" << " : " << "Salimos del juego" << "\n";
 	std::cout << "- HELP" << " : " << "Nos sale el menu de ayuda" << "\n";
 
