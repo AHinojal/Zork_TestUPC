@@ -1,12 +1,14 @@
 #pragma once
+#include "Room.h"
+
 class World {
-	private:
-		int edad;
 	public:
+		Room* actualRoom;
+
 		World(); // Constructor por defecto
-		World(int edad); // Constructor base
 		~World(); // Destructor
 
-		int getEdad();
-		void setEdad(int edad);
+		void startGame();
+		void showHelpComands();
+		void showActualRoom();
 };
