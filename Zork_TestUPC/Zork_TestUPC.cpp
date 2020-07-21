@@ -13,7 +13,6 @@ int main()
 
 	World zorkWorld;
 
-	zorkWorld.startGame();
 	while (true) {
 		string command;
 		std::cout << ">";
@@ -49,7 +48,10 @@ int main()
 				}
 				else if (command == "INVENTARIO") {
 					// TODO: Tendremos que crear un metodo en el jugador viendo el inventario que tiene
-					std::cout << "Inventario del jugador: " << "[BATE, LINTERNA]" << "\n";
+					std::cout << "Inventario del jugador: ";
+					zorkWorld.player->showInfo();
+					std::cout << "\n";
+
 				}
 				else if (command == "COGER") {
 					std::cout << "Que objeto quieres coger?" << "\n";
@@ -88,6 +90,9 @@ int main()
 					}
 					else if (direction == "OESTE") {
 						std::cout << "Vamos hacia la derecha." << "\n";
+					}
+					else {
+						std::cout << "Esta direccion no es valida." << "\n";
 					}
 				}
 				else {

@@ -1,10 +1,11 @@
 #pragma once
 #include "Room.h"
+#include "Player.h"
 
 class World {
 	public:
 		Room* actualRoom;
-		// Player* player;
+		Player* player;
 
 		World(); // Constructor por defecto
 		~World(); // Destructor
