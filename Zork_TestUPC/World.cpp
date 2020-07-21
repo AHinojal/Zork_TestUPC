@@ -42,10 +42,37 @@ World::World()
 	Exit* move3 = new Exit("SUR", "", SUR, hall, porch, false, NULL);
 	Exit* move2 = new Exit("ESTE", "", ESTE, porch, neighbourHouse, false, NULL);
 	Exit* move4 = new Exit("OESTE", "", OESTE, neighbourHouse, porch, false, NULL);
+	Exit* move5 = new Exit("ESTE", "", ESTE, hall, parentsBedroom, false, NULL);
+	Exit* move6 = new Exit("OESTE", "", OESTE, parentsBedroom, hall, false, NULL);
+	Exit* move7 = new Exit("NORTE", "", NORTE, hall, playerBedroom, false, NULL);
+	Exit* move8 = new Exit("SUR", "", SUR, playerBedroom, hall, false, NULL);
+	Exit* move9 = new Exit("OESTE", "", OESTE, hall, kitchen, false, NULL);
+	Exit* move10 = new Exit("ESTE", "", ESTE, kitchen, hall, false, NULL);
+	Exit* move11 = new Exit("NORTE", "", NORTE, parentsBedroom, bathroom, false, NULL);
+	Exit* move12 = new Exit("SUR", "", SUR, bathroom, parentsBedroom, false, NULL);
+	Exit* move13 = new Exit("OESTE", "", OESTE, bathroom, playerBedroom, false, NULL);
+	Exit* move14 = new Exit("ESTE", "", ESTE, playerBedroom, bathroom, false, NULL);
+	Exit* move15 = new Exit("SUR", "", SUR, garden, kitchen, false, NULL);
+	Exit* move16 = new Exit("NORTE", "", NORTE, kitchen, garden, false, NULL);
+	Exit* move17 = new Exit("SUR", "", SUR, kitchen, basement, false, NULL);
 	this->exits.push_back(move1);
 	this->exits.push_back(move2);
 	this->exits.push_back(move3);
 	this->exits.push_back(move4);
+	this->exits.push_back(move5);
+	this->exits.push_back(move6);
+	this->exits.push_back(move7);
+	this->exits.push_back(move8);
+	this->exits.push_back(move9);
+	this->exits.push_back(move10);
+	this->exits.push_back(move11);
+	this->exits.push_back(move12);
+	this->exits.push_back(move13);
+	this->exits.push_back(move14);
+	this->exits.push_back(move15);
+	this->exits.push_back(move16);
+	this->exits.push_back(move17);
+
 
 	// PERSONAJES
 	// NPCs
@@ -105,6 +132,9 @@ bool World::tryChangeRoom(string direction)
 					this->player->setLocation(move->getDestination());
 					isChangedRoom = true;
 				}
+			}
+			if (!isChangedRoom) {
+				std::cout << "No tienes el objeto necesario para ir a la siguiente habitacion." << "\n";
 			}
 		}
 	}
