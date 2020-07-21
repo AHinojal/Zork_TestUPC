@@ -12,8 +12,9 @@ class Player : public Creature
 		~Player();
 
 		void showInfo();
+		Room* getLocation();
+		void setLocation(Room* newRoom);
 		void showInventary();
-		bool takeItem(string nameItem);
 		bool throwItem(string nameItem);
 };
 

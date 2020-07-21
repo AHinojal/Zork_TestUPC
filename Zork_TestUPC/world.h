@@ -1,11 +1,13 @@
 #pragma once
 #include "Room.h"
 #include "Player.h"
+#include "Item.h"
 #include <vector>
 
 class World {
 	public:
-		vector<Entity*> entities;
+		vector<Item*> items;
+		vector<Room*> rooms;
 		Room* actualRoom;
 		Player* player;
 
@@ -14,4 +16,5 @@ class World {
 
 		void showHelpComands();
 		void showActualRoom();
+		bool takeItem(string nameItem);
 };

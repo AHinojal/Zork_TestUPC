@@ -16,6 +16,26 @@ Entity::Entity(string name, string description)
 
 }
 
+string Entity::getName()
+{
+	return this->name;
+}
+
+void Entity::setName(string name)
+{
+	this->name = name;
+}
+
+string Entity::getDescription()
+{
+	return this->description;
+}
+
+void Entity::setDescription(string description)
+{
+	this->description = description;
+}
+
 void Entity::showInfo()
 {
 	std::cout << "\n" << this->name << "\n";

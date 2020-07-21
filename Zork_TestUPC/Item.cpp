@@ -5,6 +5,7 @@ Item::Item(string name, string description, Room * location) : Entity (name, des
 {
 	type = ITEM;
 	this->location = location;
+	this->isAlreadyTaken = false;
 }
 
 Item::~Item()
@@ -24,6 +25,16 @@ Room* Item::getLocation()
 void Item::setLocation(Room* location)
 {
 	this->location = location;
+}
+
+bool Item::getIsAlreadyTaken()
+{
+	return this->isAlreadyTaken;
+}
+
+void Item::setIsAlreadyTaken(bool isTaken)
+{
+	this->isAlreadyTaken = isTaken;
 }
 
 void Item::showInfo()

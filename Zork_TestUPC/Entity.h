@@ -22,6 +22,10 @@ class Entity
 		Entity(string name, string description, list<Entity*> contains);
 		Entity(string name, string description);
 
+		string getName();
+		void setName(string name);
+		string getDescription();
+		void setDescription(string description);
 		void showInfo();
 };
 

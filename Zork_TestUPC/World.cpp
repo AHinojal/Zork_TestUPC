@@ -21,11 +21,22 @@ World::World()
 	Room* kitchen = new Room("COCINA", "Tus padres te han dejado la cena preparada en el plato. Inexplicablemente, te falta el cuchillo en la mesa.\nTambien te das cuenta que la puerta del sotano esta entreabierta. Para ir ahi, ve al sur.\nSi quieres volver al salon, dirigete hacia el oeste. Tambien puedes dirigirte a la terraza, la cual tienes enfrente.");
 	Room* garden = new Room("JARDIN", "Esta todo muy tranquilo. Rara vez hay robos en el vecindario.\nPero nunca se sabe...\nVuelve atras para regresar a la cocina.\n");
 	Room* basement = new Room("SOTANO", "Bajas las escaleras y por sorpresa, te encuentras a un ladron robando.\nParece que no te ha visto. Te toca enfrentarte a el.\n");
+	this->rooms.push_back(porch);
+	this->rooms.push_back(neighbourHouse);
+	this->rooms.push_back(hall);
+	this->rooms.push_back(parentsBedroom);
+	this->rooms.push_back(playerBedroom);
+	this->rooms.push_back(bathroom);
+	this->rooms.push_back(kitchen);
+	this->rooms.push_back(garden);
+	this->rooms.push_back(basement);
 	// MOVIMIENTOS
 
 	// ITEMS
-	Item* keysHouse = new Item("LLAVES DE CASA", "Menos mal que el vecino tenia una copia...", neighbourHouse);
-	Item* baseballBat = new Item("BATE DE BEISBOL", "Ya tiene sus años, pero para protegerme esta bien", playerBedroom);
+	Item* keysHouse = new Item("LLAVES", "Menos mal que el vecino tenia una copia...", neighbourHouse);
+	Item* baseballBat = new Item("BATE", "Ya tiene sus años, pero para protegerme esta bien", playerBedroom);
+	this->items.push_back(keysHouse);
+	this->items.push_back(baseballBat);
 
 	// PERSONAJES
 	// NPCs
@@ -37,7 +48,7 @@ World::World()
 	std::cout << "Give me your name, hero!\n" << ">";
 	std::getline(std::cin, namePlayer);
 	// TODO: Setear el nombre del jugador aqui;
-	this->player = new Player(namePlayer, "Let's start the adventure!", porch);
+	this->player = new Player(namePlayer, "Let's start the adventure!", neighbourHouse);
 	std::cout << "Welcome, " << this->player->getName() << "! " << this->player->getDescription() << "\n";
 	this->actualRoom = this->player->getLocation();
 	this->actualRoom->showInfo();
@@ -65,3 +76,26 @@ void World::showActualRoom()
 {
 	this->actualRoom->showInfo();
 }
+
+bool World::takeItem(string nameItem)
+{
+	bool result = false;
+	string actualRoom = this->player->getLocation()->getName();
+	for (int i = 0; i < items.size(); i++) {
+		// Primero comprobamos el nombre del objeto que queremos
+		if (nameItem == items[i]->getName()) {
+			// Despues comprobamos si el jugador y el objeto estan en la misma sala
+			if (actualRoom == items[i]->getLocation()->getName()) {
+				if (!items[i]->getIsAlreadyTaken()) {
+					items[i]->setIsAlreadyTaken(true);
+					this->player->inventory.push_back(items[i]);
+					result = true;
+				}
+			}
+		}
+		//std::cout << items[i]->getName();
+		
+	}
+	return result;
+}
+

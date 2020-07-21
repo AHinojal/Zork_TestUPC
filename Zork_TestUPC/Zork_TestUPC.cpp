@@ -47,6 +47,7 @@ int main()
 		string goWord;
 		string direction;
 		switch (wordsCont) {
+			// Si es de una palabra -> comando
 			case 1:
 				if (command == "HELP") {
 					zorkWorld.showHelpComands();
@@ -68,9 +69,11 @@ int main()
 					string object;
 					std::cout << ">";
 					std::getline(std::cin, object);
+					object = transformUpperCase(object);
 					// TODO: Tendremos que crear un metodo en el jugador compare si esta en la habitacion adecuada y lo que coge esta en la lista de items
-
-
+					bool canTake = zorkWorld.takeItem(object);
+					string message = (canTake) ? "Has recogido el objeto. Se ha metido en tu inventario." : "El objeto no esta en la habitacion o ya lo tienes en el inventario.";
+					std::cout << message << "\n";
 				}
 				else if (command == "SOLTAR") {
 					std::cout << "Que objeto quieres soltar?" << "\n";
@@ -78,15 +81,16 @@ int main()
 					std::cout << ">";
 					std::getline(std::cin, object);
 					object = transformUpperCase(object);
-					// TODO: Tendremos que crear un metodo en el jugador mire su inventario y si tiene el objeto, eliminarlo de la lista
+					// Tendremos que crear un metodo en el jugador mire su inventario y si tiene el objeto, eliminarlo de la lista
 					bool canThrow = zorkWorld.player->throwItem(object);
-					string message = (canThrow) ? "El objeto ha sido eliminado del inventario" : "No tienes ese objeto";
+					string message = (canThrow) ? "El objeto ha sido eliminado del inventario." : "No tienes ese objeto en el inventario.";
 					std::cout << message << "\n";
 				}
 				else {
 					std::cout << "Este comando no es valido." << "\n";
 				}
 				break;
+			// Si son dos palabras -> direccion
 			case 2:
 				// Comprobamos si la entrada de dos palabras es la direccion que queremos ir
 				goWord = command.substr(0, 2);
