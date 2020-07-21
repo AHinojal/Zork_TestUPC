@@ -24,6 +24,11 @@ Room * Player::getLocation()
 	return location;
 }
 
+vector<Item*> Player::getInventory()
+{
+	return this->inventory;
+}
+
 void Player::setLocation(Room * newRoom)
 {
 	this->location = newRoom;

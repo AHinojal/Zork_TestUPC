@@ -3,14 +3,15 @@
 #include "Player.h"
 #include "Item.h"
 #include "Npc.h"
+#include "Exit.h"
 #include <vector>
 
 class World {
 	public:
 		vector<Item*> items;
 		vector<Room*> rooms;
+		vector<Exit*> exits;
 		vector<Npc*> npcs;
-		Room* actualRoom;
 		Player* player;
 
 		World(); // Constructor por defecto
@@ -18,6 +19,12 @@ class World {
 
 		void showHelpComands();
 		void showActualRoom();
+		bool tryChangeRoom(string direction);
 		bool takeItem(string nameItem);
 		void showDialogNpc();
+
+	private:
+		Exit* getPossibleDestination(string direction);
+		DirectionType convert(string direction);
+
 };

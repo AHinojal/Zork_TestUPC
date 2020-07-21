@@ -100,18 +100,15 @@ int main()
 
 				if (goWord == "IR") {
 					// Podemos ir a la direccion que queramos
-					if (direction == "NORTE") {
+					if (direction == "NORTE" || direction == "SUR" || direction == "ESTE" || direction == "OESTE") {
 						// TODO: Habra que comprobar si la habitacion puede ir esa direccion
-						std::cout << "Vamos hacia adelante" << "\n";
-					}
-					else if (direction == "SUR") {
-						std::cout << "Vamos hacia detras." << "\n";
-					}
-					else if (direction == "ESTE") {
-						std::cout << "Vamos hacia la izquierda" << "\n";
-					}
-					else if (direction == "OESTE") {
-						std::cout << "Vamos hacia la derecha." << "\n";
+						bool changeRoom = zorkWorld.tryChangeRoom(direction);
+						if (changeRoom) {
+							zorkWorld.player->getLocation()->showInfo();
+						}
+						else {
+							std::cout << "No puedes moverte en esa direccion" << "\n";
+						}
 					}
 					else {
 						std::cout << "Esta direccion no es valida." << "\n";

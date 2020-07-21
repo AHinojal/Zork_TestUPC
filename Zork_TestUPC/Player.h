@@ -13,6 +13,7 @@ class Player : public Creature
 
 		void showInfo();
 		Room* getLocation();
+		vector<Item*> getInventory();
 		void setLocation(Room* newRoom);
 		void showInventary();
 		bool throwItem(string nameItem);
