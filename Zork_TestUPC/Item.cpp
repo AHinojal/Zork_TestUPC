@@ -11,6 +11,21 @@ Item::~Item()
 {
 }
 
+string Item::getName()
+{
+	return name;
+}
+
+Room* Item::getLocation()
+{
+	return this->location;
+}
+
+void Item::setLocation(Room* location)
+{
+	this->location = location;
+}
+
 void Item::showInfo()
 {
 	std::cout << name << " - " << description << "\n";

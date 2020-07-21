@@ -47,9 +47,8 @@ int main()
 					exit(0);
 				}
 				else if (command == "INVENTARIO") {
-					// TODO: Tendremos que crear un metodo en el jugador viendo el inventario que tiene
 					std::cout << "Inventario del jugador: ";
-					zorkWorld.player->showInfo();
+					zorkWorld.player->showInventary();
 					std::cout << "\n";
 
 				}
@@ -58,14 +57,19 @@ int main()
 					string object;
 					std::cout << ">";
 					std::getline(std::cin, object);
-					std::cout << object << "\n";
+					// TODO: Tendremos que crear un metodo en el jugador compare si esta en la habitacion adecuada y lo que coge esta en la lista de items
+
+
 				}
 				else if (command == "SOLTAR") {
 					std::cout << "Que objeto quieres soltar?" << "\n";
 					string object;
 					std::cout << ">";
 					std::getline(std::cin, object);
-					std::cout << object << "\n";
+					// TODO: Tendremos que crear un metodo en el jugador mire su inventario y si tiene el objeto, eliminarlo de la lista
+					bool canThrow = zorkWorld.player->throwItem(object);
+					string message = (canThrow) ? "El objeto ha sido eliminado del inventario" : "No tienes ese objeto";
+					std::cout << message << "\n";
 				}
 				else {
 					std::cout << "Este comando no es valido." << "\n";

@@ -9,6 +9,9 @@ class Item : public Entity
 		Item(string name, string description, Room* location);
 		~Item();
 
+		string getName();
+		Room* getLocation();
+		void setLocation(Room* location);
 		void showInfo();
 };
 

@@ -2,6 +2,7 @@
 #include "Room.h"
 #include "Player.h"
 #include "Npc.h"
+#include "Item.h"
 #include <string>
 #include <iostream>
 
@@ -23,6 +24,8 @@ World::World()
 	// MOVIMIENTOS
 
 	// ITEMS
+	Item* keysHouse = new Item("LLAVES DE CASA", "Menos mal que el vecino tenia una copia...", neighbourHouse);
+	Item* baseballBat = new Item("BATE DE BEISBOL", "Ya tiene sus años, pero para protegerme esta bien", playerBedroom);
 
 	// PERSONAJES
 	// NPCs
@@ -56,7 +59,6 @@ void World::showHelpComands()
 	std::cout << "- INVENTARIO" << " : " << "Vemos los objetos que tiene el jugador" << "\n";
 	std::cout << "- QUIT" << " : " << "Salimos del juego" << "\n";
 	std::cout << "- HELP" << " : " << "Nos sale el menu de ayuda" << "\n";
-
 }
 
 void World::showActualRoom()
