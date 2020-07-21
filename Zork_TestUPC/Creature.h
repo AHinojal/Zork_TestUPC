@@ -12,6 +12,8 @@ class Creature : public Entity
 
 		string getName();
 		void setName(string newName);
+		string getDescription();
+		void setDescription(string newDescription);
 		Room* getLocation();
 		void setLocation(Room* location);
 };

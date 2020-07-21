@@ -7,6 +7,25 @@
 
 using namespace std;
 
+string transformUpperCase(string word) {
+	for (int i = 0; i < word.length(); i++) {
+		word[i] = toupper(word[i]);
+	}
+	return word;
+}
+
+int accountantWordString(string sentence) {
+	int wordsCont = 1;
+	for (int i = 0; i < sentence.length(); i++)
+	{
+		if (sentence[i] == ' ' && sentence[i + 1] != ' ')
+		{
+			wordsCont++;
+		}
+	}
+	return wordsCont;
+}
+
 int main()
 {
     std::cout << "Hello to Zork by Alvaro Hinojal!\n";
@@ -18,20 +37,12 @@ int main()
 		std::cout << ">";
 		std::getline(std::cin, command);
 
-		// Pasen lo que nos pasen, siempre lo tendremos en mayusculas
-		for (int i = 0; i < command.length(); i++) {
-			command[i] = toupper(command[i]);
-		}
+		// Ponemos el comando en mayuscular
+		command = transformUpperCase(command);
 		
-		// Contamos las palabras
-		int wordsCont = 1;
-		for (int i = 0; i < command.length(); i++)
-		{
-			if (command[i] == ' ' && command[i + 1] != ' ')
-			{
-				wordsCont++;
-			}
-		}
+		// Contamos las palabras del comando
+		int wordsCont = accountantWordString(command);
+
 		// Vemos que hacemos con el comando
 		string goWord;
 		string direction;
@@ -66,6 +77,7 @@ int main()
 					string object;
 					std::cout << ">";
 					std::getline(std::cin, object);
+					object = transformUpperCase(object);
 					// TODO: Tendremos que crear un metodo en el jugador mire su inventario y si tiene el objeto, eliminarlo de la lista
 					bool canThrow = zorkWorld.player->throwItem(object);
 					string message = (canThrow) ? "El objeto ha sido eliminado del inventario" : "No tienes ese objeto";

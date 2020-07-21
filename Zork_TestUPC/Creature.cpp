@@ -20,6 +20,16 @@ void Creature::setName(string newName)
 	name = newName;
 }
 
+string Creature::getDescription()
+{
+	return description;
+}
+
+void Creature::setDescription(string newDescription)
+{
+	description = newDescription;
+}
+
 Room* Creature::getLocation()
 {
 	return this->location;

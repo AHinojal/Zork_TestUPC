@@ -36,9 +36,9 @@ World::World()
 	string namePlayer;
 	std::cout << "Give me your name, hero!\n" << ">";
 	std::getline(std::cin, namePlayer);
-	std::cout << "Welcome, " << namePlayer << "! Let's start the adventure!\n";
 	// TODO: Setear el nombre del jugador aqui;
 	this->player = new Player(namePlayer, "Let's start the adventure!", porch);
+	std::cout << "Welcome, " << this->player->getName() << "! " << this->player->getDescription() << "\n";
 	this->actualRoom = this->player->getLocation();
 	this->actualRoom->showInfo();
 }

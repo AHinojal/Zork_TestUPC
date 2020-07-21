@@ -45,10 +45,12 @@ bool Player::takeItem(string nameItem)
 
 bool Player::throwItem(string nameItem)
 {
+	std::cout << nameItem;
 	bool result = false;
 	for (int i = 0; i < this->inventory.size(); i++) {
+		//std::cout << i << "-" <<  this->inventory[i]->getName();
 		if (this->inventory[i]->getName() == nameItem) {
-			//this->inventory.erase(i);
+			this->inventory.erase(this->inventory.begin() + i);
 			result = true;
 		}
 	}
