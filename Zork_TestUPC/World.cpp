@@ -38,10 +38,10 @@ World::World()
 	this->items.push_back(baseballBat);
 
 	// MOVIMIENTOS
-	Exit* move1 = new Exit("", NULL, NORTE, porch, hall, true, keysHouse);
-	Exit* move3 = new Exit("", NULL, SUR, hall, porch, false, NULL);
-	Exit* move2 = new Exit("", NULL, ESTE, porch, neighbourHouse, false, NULL);
-	Exit* move4 = new Exit("", NULL, OESTE, neighbourHouse, porch, false, NULL);
+	Exit* move1 = new Exit("NORTE", "", NORTE, porch, hall, true, keysHouse);
+	Exit* move3 = new Exit("SUR", "", SUR, hall, porch, false, NULL);
+	Exit* move2 = new Exit("ESTE", "", ESTE, porch, neighbourHouse, false, NULL);
+	Exit* move4 = new Exit("OESTE", "", OESTE, neighbourHouse, porch, false, NULL);
 	this->exits.push_back(move1);
 	this->exits.push_back(move2);
 	this->exits.push_back(move3);
@@ -146,35 +146,12 @@ void World::showDialogNpc()
 Exit* World::getPossibleDestination(string direction)
 {
 	Exit* possibleDestination = NULL;
-	DirectionType directionEnum = convert(direction);
 	string actualRoom = this->player->getLocation()->getName();
 	// Miramos si hay algun posible movimiento desde la actual habitacion y en la direccion selecciona
 	for (int i = 0; i < this->exits.size(); i++) {
-		if (exits[i]->getOrigin()->getName() == actualRoom && exits[i]->getDirection() == directionEnum) {
+		if (exits[i]->getOrigin()->getName() == actualRoom && exits[i]->getName() == direction) {
 			possibleDestination = exits[i];
 		}
 	}
 	return possibleDestination;
 }
-
-DirectionType World::convert(string direction)
-{
-	DirectionType directionEnum;
-
-	if (direction == "NORTE") {
-		directionEnum = NORTE;
-	}
-	else if (direction == "SUR") {
-		directionEnum = SUR;
-	}
-	else if (direction == "ESTE") {
-		directionEnum = ESTE;
-	}
-	else if (direction == "OESTE") {
-		directionEnum = OESTE;
-	}
-
-	return directionEnum;
-}
-
-

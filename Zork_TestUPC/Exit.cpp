@@ -13,11 +13,6 @@ Exit::~Exit()
 {
 }
 
-DirectionType Exit::getDirection()
-{
-	return this->direction;
-}
-
 Room * Exit::getOrigin()
 {
 	return this->origin;

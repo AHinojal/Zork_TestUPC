@@ -19,7 +19,6 @@ class Exit : public Entity
 		Exit(string name, string description, DirectionType direction, Room* origin, Room* destination, bool isLocked, Item* keyDoor);
 		~Exit();
 
-		DirectionType getDirection();
 		Room* getOrigin();
 		Room* getDestination();
 		bool getIsLocked();

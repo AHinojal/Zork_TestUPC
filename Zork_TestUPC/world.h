@@ -25,6 +25,5 @@ class World {
 
 	private:
 		Exit* getPossibleDestination(string direction);
-		DirectionType convert(string direction);
 
 };
