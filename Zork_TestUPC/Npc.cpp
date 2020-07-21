@@ -9,3 +9,8 @@ Npc::Npc(string name, string description, Room* location) : Creature(name, descr
 Npc::~Npc()
 {
 }
+
+string Npc::showDialog()
+{
+	return description;
+}

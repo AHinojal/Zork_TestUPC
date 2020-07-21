@@ -58,11 +58,13 @@ int main()
 				else if (command == "QUIT") {
 					exit(0);
 				}
+				else if (command == "DIALOGAR") {
+					zorkWorld.showDialogNpc();
+				}
 				else if (command == "INVENTARIO") {
 					std::cout << "Inventario del jugador: ";
 					zorkWorld.player->showInventary();
 					std::cout << "\n";
-
 				}
 				else if (command == "COGER") {
 					std::cout << "Que objeto quieres coger?" << "\n";
