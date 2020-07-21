@@ -7,7 +7,12 @@ using namespace std;
 Player::Player(string name, string description, Room* location) : Creature(name, description, location)
 {
 	type = PLAYER;
-	this->inventory;
+	this->inventory = {};
+	// PRUEBA INVENTARIO
+	Item* keysHouse = new Item("LLAVES DE CASA", "Menos mal que el vecino tenia una copia...", NULL);
+	Item* keysHousle = new Item("BOMBA", "Menos mal que el vecino tenia una copia...", NULL);
+	this->inventory.push_back(keysHouse);
+	this->inventory.push_back(keysHousle);
 }
 
 Player::~Player()
@@ -21,10 +26,13 @@ void Player::showInfo()
 
 void Player::showInventary()
 {
-	std::cout << "[ ";
+	std::cout << "[";
 	for (int i = 0; i < this->inventory.size(); i++) {
-		this->inventory[i]->getName();
-		std::cout << " ";
+		std::cout << this->inventory[i]->getName();
+		if (i < this->inventory.size()-1) {
+			std::cout << ", ";
+		}
+		
 	}
 	std::cout << "]";
 	
@@ -40,8 +48,7 @@ bool Player::throwItem(string nameItem)
 	bool result = false;
 	for (int i = 0; i < this->inventory.size(); i++) {
 		if (this->inventory[i]->getName() == nameItem) {
-			// TODO: Ver como borrar el elemento del vector this->inventory[i].
-			//this->inventory.
+			//this->inventory.erase(i);
 			result = true;
 		}
 	}
