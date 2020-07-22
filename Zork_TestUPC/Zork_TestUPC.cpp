@@ -31,8 +31,9 @@ int main()
     std::cout << "Hello to Zork by Alvaro Hinojal!\n";
 
 	World zorkWorld;
+	bool isNotLastRoom = true;
 
-	while (true) {
+	while (isNotLastRoom) {
 		string command;
 		std::cout << ">";
 		std::getline(std::cin, command);
@@ -122,7 +123,13 @@ int main()
 				std::cout << "Este comando no es valido." << "\n";
 				break;
 		}
+
+		if (zorkWorld.player->getLocation()->getName() == "SOTANO") {
+			isNotLastRoom = false;
+		}
 	}
+
+	std::cout << "Thanks for playing Zork, " << transformUpperCase(zorkWorld.player->getName()) << "!\n";
 
 	// RECUERDOS
 	/*int numero = 10;

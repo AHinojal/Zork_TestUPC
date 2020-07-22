@@ -16,9 +16,9 @@ World::World()
 	Room* neighbourHouse = new Room("ENTRADA DE LA CASA DEL VECINO", "Estas en la entrada de la casa de tu vecino Paco.\nSu mujer se encuentra en el porche, sentada en una silla.\nA tu derecha, se encuentra tu casa.\n");
 	Room* hall = new Room("SALON", "Por fin estas en casa!! No hay ninguna luz encendida y escuchas un sonido, pero no sabes de donde proviene.\nSi quieres volver a la entrada, esta al sur. Puedes dirigirte tambien a tu izquierda, que esta la habitacion de tus padres o a la derecha, la cocina.\nAdemas, delante tuya tienes tu habitacion.\n");
 	Room* parentsBedroom = new Room("HABITACION DE TUS PADRES", "Te encuentras a tu madre ya dormida y a tu padre viendo la tele a un volumen altisimo.\nEl sonido que has escuchado en el salon podria proveenir de aqui.\nDebajo tienes el aseo y al oeste, volverias al salon.\n");
-	Room* playerBedroom = new Room("HABITACION DEL JUGADOR", "La habitacion esta hecha un desastre. Encima de la cama tienes los libros de clase y en el suelo, tienes tirada la mochila con el material de beisbol.\nSi quieres volver a la entrada, esta al sur. Al este, tienes el aseo.\n");
+	Room* playerBedroom = new Room("HABITACION DEL JUGADOR", "La habitacion esta hecha un desastre. Encima de la cama tienes los libros de clase y en el suelo, tienes tirada la mochila con el material de beisbol.\nSi quieres volver al salon, esta al sur. Al este, tienes el aseo.\n");
 	Room* bathroom = new Room("ASEO", "El aseo esta completamente vacio. No hay nada de utilidad.\nLa habitacion de tus padres la tienes al sur y la tuya, al oeste.\n");
-	Room* kitchen = new Room("COCINA", "Tus padres te han dejado la cena preparada en el plato. Inexplicablemente, te falta el cuchillo en la mesa.\nTambien te das cuenta que la puerta del sotano esta entreabierta. Para ir ahi, ve al sur.\nSi quieres volver al salon, dirigete hacia el oeste. Tambien puedes dirigirte a la terraza, la cual tienes enfrente.\n");
+	Room* kitchen = new Room("COCINA", "Tus padres te han dejado la cena preparada en el plato. Inexplicablemente, te falta el cuchillo en la mesa.\nTambien te das cuenta que la puerta del sotano esta entreabierta. Para ir ahi, ve al sur.\nSi quieres volver al salon, dirigete hacia el este. Tambien puedes dirigirte a la terraza, la cual tienes enfrente.\n");
 	Room* garden = new Room("JARDIN", "Esta todo muy tranquilo. Rara vez hay robos en el vecindario.\nPero nunca se sabe...\nVuelve atras para regresar a la cocina.\n");
 	Room* basement = new Room("SOTANO", "Bajas las escaleras y por sorpresa, te encuentras a un ladron robando.\nParece que no te ha visto. Te toca enfrentarte a el.\n");
 	this->rooms.push_back(porch);
@@ -73,10 +73,9 @@ World::World()
 	this->exits.push_back(move16);
 	this->exits.push_back(move17);
 
-
 	// PERSONAJES
 	// NPCs
-	Npc* neighbour = new Npc("LOLA", "Que alto estas! Toma! Coge las llaves de tu casa, bonito!", neighbourHouse);
+	Npc* neighbour = new Npc("LOLA", "Que alto estas, bonito! Toma! Coge las llaves de tu casa!", neighbourHouse);
 	Npc* dad = new Npc("PAPA", "Que haces a estas horas despierto, hijo?", parentsBedroom);
 	Npc* thief = new Npc("THIEF", "Esto no deberia estar pasando...", basement);
 	this->npcs.push_back(neighbour);
@@ -86,7 +85,7 @@ World::World()
 	string namePlayer;
 	std::cout << "Give me your name, hero!\n" << ">";
 	std::getline(std::cin, namePlayer);
-	// TODO: Setear el nombre del jugador aqui;
+	// Seteo introduccion del nombre del jugador aqui
 	this->player = new Player(namePlayer, "Let's start the adventure!", porch);
 	std::cout << "Welcome, " << this->player->getName() << "! " << this->player->getDescription() << "\n";
 	this->player->getLocation()->showInfo();
@@ -134,7 +133,7 @@ bool World::tryChangeRoom(string direction)
 				}
 			}
 			if (!isChangedRoom) {
-				std::cout << "No tienes el objeto necesario para ir a la siguiente habitacion." << "\n";
+				std::cout << "CERRADO! No tienes el objeto necesario para ir a la siguiente habitacion." << "\n";
 			}
 		}
 	}
