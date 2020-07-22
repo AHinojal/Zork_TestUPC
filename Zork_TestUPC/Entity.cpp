@@ -38,6 +38,6 @@ void Entity::setDescription(string description)
 
 void Entity::showInfo()
 {
-	std::cout << "\n" << this->name << "\n";
+	std::cout << this->name << "\n";
 	std::cout << "\n" << this->description << "\n";
 }

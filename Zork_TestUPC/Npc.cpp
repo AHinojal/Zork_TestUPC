@@ -12,5 +12,5 @@ Npc::~Npc()
 
 string Npc::showDialog()
 {
-	return description;
+	return "*" + name + ": " + description;
 }

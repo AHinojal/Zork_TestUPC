@@ -39,5 +39,5 @@ void Item::setIsAlreadyTaken(bool isTaken)
 
 void Item::showInfo()
 {
-	std::cout << name << " - " << description << "\n";
+	std::cout << "Has recogido el objeto " << name << "! *" << description << "*\n";
 }
