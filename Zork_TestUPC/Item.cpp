@@ -56,5 +56,6 @@ void Item::showInfo()
 			Entity* item = *it;
 			item->showInfo();
 		}
+		std::cout << "*NOTA*: Los objetos que estan dentro de un item NO se pueden tirar. Tienes que tirar el objeto contenedor!" << "\n";
 	}
 }

@@ -76,14 +76,14 @@ int main()
 						bool canAttack = false;
 						vector<Item*> actualInventoryPlayer = zorkWorld.player->getInventory();
 						for (int i = 0; i < actualInventoryPlayer.size(); i++) {
-							if (actualInventoryPlayer[i]->getName() == "BATE") {
+							if (actualInventoryPlayer[i]->getName() == "MOCHILA") {
 								canAttack = true;
 							}
 						}
 						if (!canAttack) {
 							zorkWorld.showDialogNpc();
 						}
-						string message = canAttack ? "Has conseguido detener al ladron! HAS GANADO! ENHORABUENA!" : "No tienes nada con que atacar y el ladron te ha herido...HAS PERDIDO! :(";
+						string message = canAttack ? "Has conseguido detener al ladron con el bate que tenias en la mochila! HAS GANADO! ENHORABUENA!" : "No tienes nada con que atacar y el ladron te ha herido...HAS PERDIDO! :(";
 						std::cout << message << "\n";
 						endGame = true;
 					}

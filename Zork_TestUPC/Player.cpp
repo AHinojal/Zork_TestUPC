@@ -62,11 +62,13 @@ bool Player::throwItem(string nameItem)
 {
 	bool result = false;
 	for (int i = 0; i < this->inventory.size(); i++) {
+		// Solo se puede tirar items principales
+		// Si soltamos objetos internos en un item -> dificil luego volver a obtenerlo
 		if (this->inventory[i]->getName() == nameItem) {
 			this->inventory[i]->setIsAlreadyTaken(false);
 			this->inventory.erase(this->inventory.begin() + i);
 			result = true;
-		}
+		} 
 	}
 	return result;
 }
