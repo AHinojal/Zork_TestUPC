@@ -55,6 +55,9 @@ int main()
 				if (command == "HELP") {
 					zorkWorld.showHelpComands();
 				}
+				else if (command == "LIMPIAR") {
+					std::cout << "\n\n\n\n\n\n\n\n\n\n";
+				}
 				else if (command == "VER") {
 					zorkWorld.showActualRoom();
 				}

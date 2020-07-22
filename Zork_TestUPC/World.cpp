@@ -32,7 +32,7 @@ World::World()
 	this->rooms.push_back(basement);
 
 	// ITEMS
-	Item* keysHouse = new Item("LLAVES", "Menos mal que el vecino tenia una copia...", neighbourHouse);
+	Item* keysHouse = new Item("LLAVES", "Menos mal que los vecinos tenian una copia...", neighbourHouse);
 	Item* baseballBat = new Item("BATE", "Ya tiene su tiempo, pero para protegerme en una emergencia, esta bien...", playerBedroom);
 	this->items.push_back(keysHouse);
 	this->items.push_back(baseballBat);
@@ -40,18 +40,18 @@ World::World()
 	// MOVIMIENTOS
 	Exit* move1 = new Exit("NORTE", "", NORTE, porch, hall, true, keysHouse);
 	Exit* move3 = new Exit("SUR", "", SUR, hall, porch, false, NULL);
-	Exit* move2 = new Exit("ESTE", "", ESTE, porch, neighbourHouse, false, NULL);
-	Exit* move4 = new Exit("OESTE", "", OESTE, neighbourHouse, porch, false, NULL);
-	Exit* move5 = new Exit("ESTE", "", ESTE, hall, parentsBedroom, false, NULL);
-	Exit* move6 = new Exit("OESTE", "", OESTE, parentsBedroom, hall, false, NULL);
+	Exit* move2 = new Exit("OESTE", "", OESTE, porch, neighbourHouse, false, NULL);
+	Exit* move4 = new Exit("ESTE", "", ESTE, neighbourHouse, porch, false, NULL);
+	Exit* move5 = new Exit("OESTE", "", OESTE, hall, parentsBedroom, false, NULL);
+	Exit* move6 = new Exit("ESTE", "", ESTE, parentsBedroom, hall, false, NULL);
 	Exit* move7 = new Exit("NORTE", "", NORTE, hall, playerBedroom, false, NULL);
 	Exit* move8 = new Exit("SUR", "", SUR, playerBedroom, hall, false, NULL);
-	Exit* move9 = new Exit("OESTE", "", OESTE, hall, kitchen, false, NULL);
-	Exit* move10 = new Exit("ESTE", "", ESTE, kitchen, hall, false, NULL);
+	Exit* move9 = new Exit("ESTE", "", ESTE, hall, kitchen, false, NULL);
+	Exit* move10 = new Exit("OESTE", "", OESTE, kitchen, hall, false, NULL);
 	Exit* move11 = new Exit("NORTE", "", NORTE, parentsBedroom, bathroom, false, NULL);
 	Exit* move12 = new Exit("SUR", "", SUR, bathroom, parentsBedroom, false, NULL);
-	Exit* move13 = new Exit("OESTE", "", OESTE, bathroom, playerBedroom, false, NULL);
-	Exit* move14 = new Exit("ESTE", "", ESTE, playerBedroom, bathroom, false, NULL);
+	Exit* move13 = new Exit("ESTE", "", ESTE, bathroom, playerBedroom, false, NULL);
+	Exit* move14 = new Exit("OESTE", "", OESTE, playerBedroom, bathroom, false, NULL);
 	Exit* move15 = new Exit("SUR", "", SUR, garden, kitchen, false, NULL);
 	Exit* move16 = new Exit("NORTE", "", NORTE, kitchen, garden, false, NULL);
 	Exit* move17 = new Exit("SUR", "", SUR, kitchen, basement, false, NULL);
@@ -96,7 +96,7 @@ World::World()
 
 World::~World()
 {
-
+	
 }
 
 void World::showHelpComands()
@@ -110,6 +110,7 @@ void World::showHelpComands()
 	std::cout << "- DIALOGAR" << " : " << "Hacemos interaccion entre NPC y jugador." << "\n";
 	std::cout << "- ATACAR" << " : " << "Nos permite realizar un ataque si el jugador tiene un objeto para ello y si podemos hacerlo." << "\n";
 	std::cout << "- INVENTARIO" << " : " << "Vemos todos los objetos que tiene almacenados el jugador." << "\n";
+	std::cout << "- LIMPIAR" << " : " << "Limpiamos el terminal de comandos. Podemos consultar todo lo anterior, si subimos el scroll." << "\n";
 	std::cout << "- QUIT" << " : " << "Salimos del juego." << "\n";
 }
 
