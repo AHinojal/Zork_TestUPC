@@ -39,6 +39,17 @@ void Player::showInventary()
 	std::cout << "[";
 	for (int i = 0; i < this->inventory.size(); i++) {
 		std::cout << this->inventory[i]->getName();
+		// Tiene items dentro del item principal
+		if (this->inventory[i]->getContains().size() > 0) {
+			list<Entity*> contains = this->inventory[i]->getContains();
+			list<Entity*>::iterator it;
+			for (it = contains.begin(); it != contains.end(); it++)
+			{
+				Entity* item = *it;
+				string objectName = item->getName();
+				std::cout << "(" << objectName << ")";
+			}
+		}
 		if (i < this->inventory.size()-1) {
 			std::cout << ", ";
 		}	

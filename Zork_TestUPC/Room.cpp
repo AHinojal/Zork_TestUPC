@@ -11,3 +11,9 @@ Room::Room(string name, string description) : Entity(name, description)
 Room::~Room()
 {
 }
+
+void Room::showInfo()
+{
+	std::cout << this->name << "\n";
+	std::cout << "\n" << this->description << "\n";
+}

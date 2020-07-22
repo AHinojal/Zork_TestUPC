@@ -6,7 +6,7 @@ Entity::Entity(string name, string description, list<Entity*> contains)
 	this->type = ENTITY;
 	this->name = name;
 	this->description = description;
-
+	this->contains = contains;
 }
 
 Entity::Entity(string name, string description)
@@ -31,6 +31,11 @@ string Entity::getDescription()
 	return this->description;
 }
 
+list<Entity*> Entity::getContains()
+{
+	return this->contains;
+}
+
 void Entity::setDescription(string description)
 {
 	this->description = description;
@@ -38,6 +43,5 @@ void Entity::setDescription(string description)
 
 void Entity::showInfo()
 {
-	std::cout << this->name << "\n";
-	std::cout << "\n" << this->description << "\n";
+	std::cout << "Has recogido el objeto " << this->name << "! *" << this->description << "*\n";
 }

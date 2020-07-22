@@ -7,7 +7,9 @@ class Item : public Entity
 	public:
 		Room* location;
 		bool isAlreadyTaken;
+
 		Item(string name, string description, Room* location);
+		Item(string name, string description, list<Entity*> contains, Room* location);
 		~Item();
 
 		string getName();

@@ -8,6 +8,14 @@ Item::Item(string name, string description, Room * location) : Entity (name, des
 	this->isAlreadyTaken = false;
 }
 
+
+Item::Item(string name, string description, list<Entity*> contains, Room * location) : Entity(name, description, contains)
+{
+	type = ITEM;
+	this->location = location;
+	this->isAlreadyTaken = false;
+}
+
 Item::~Item()
 {
 }
@@ -40,4 +48,13 @@ void Item::setIsAlreadyTaken(bool isTaken)
 void Item::showInfo()
 {
 	std::cout << "Has recogido el objeto " << name << "! *" << description << "*\n";
+	if (contains.size() > 0) {
+		std::cout << "Contiene dentro:" << "\n";
+		list<Entity*>::iterator it;
+		for (it = contains.begin(); it != contains.end(); it++)
+		{
+			Entity* item = *it;
+			item->showInfo();
+		}
+	}
 }

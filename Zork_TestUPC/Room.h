@@ -6,6 +6,6 @@ class Room : public Entity
 		Room(string name, string description);
 		~Room();
 
-
+		void showInfo();
 };
 

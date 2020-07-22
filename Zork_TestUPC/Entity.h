@@ -25,6 +25,7 @@ class Entity
 		string getName();
 		void setName(string name);
 		string getDescription();
+		list<Entity*> getContains();
 		void setDescription(string description);
 		void showInfo();
 };

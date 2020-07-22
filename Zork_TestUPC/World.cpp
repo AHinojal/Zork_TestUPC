@@ -33,9 +33,18 @@ World::World()
 
 	// ITEMS
 	Item* keysHouse = new Item("LLAVES", "Menos mal que los vecinos tenian una copia...", neighbourHouse);
+	Item* dinner = new Item("COMIDA", "Se nota que la cena se preparo hace horas, esta fria...", kitchen);
 	Item* baseballBat = new Item("BATE", "Ya tiene su tiempo, pero para protegerme en una emergencia, esta bien...", playerBedroom);
+	Item* baseballGlove = new Item("GUANTE", "Es el viejo guante de papa. Le tiene mucho aprecio, y aun asi me lo regalo...", playerBedroom);
+	Item* baseballCap = new Item("GORRA", "Me compre esta gorra de los New York Yankees cuando fui a ver uno de sus partidos...", playerBedroom);
 	this->items.push_back(keysHouse);
-	this->items.push_back(baseballBat);
+	this->items.push_back(dinner);
+	list<Entity*> itemsBaseballBag = {};
+	itemsBaseballBag.push_back(baseballBat);
+	itemsBaseballBag.push_back(baseballGlove);
+	itemsBaseballBag.push_back(baseballCap);
+	Item* baseballBag = new Item("MOCHILA", "Contiene los siguientes items dentro: BATE, GUANTE, GORRA", itemsBaseballBag, playerBedroom);
+	this->items.push_back(baseballBag);
 
 	// MOVIMIENTOS
 	Exit* move1 = new Exit("NORTE", "", NORTE, porch, hall, true, keysHouse);
