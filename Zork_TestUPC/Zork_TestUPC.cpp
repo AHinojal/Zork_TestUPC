@@ -176,4 +176,7 @@ int main()
 	}
 
 	std::cout << "Thanks for playing Zork by Alvaro Hinojal, " << transformUpperCase(zorkWorld.player->getName()) << "!\n";
+
+	std::cout << "Press ENTER to exit.\n";
+	std::cin.ignore();
 }
