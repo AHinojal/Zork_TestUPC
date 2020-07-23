@@ -45,7 +45,7 @@ You need to take the bag that is in the player's room and when you get to the ba
   3. Being able to drop items
     > You can release them at any time.
       _NOTE: Objects within an item may NOT be thrown away. You have to throw away the container object!_
-    - ~~Extracto de video en youtube (seg)~~
+    - [![Gameplays ZORK w/ Drop](https://img.youtube.com/vi/Mf22HYL2YVo/0.jpg)](https://www.youtube.com/watch?v=Mf22HYL2YVo?t=69)
   4. Items can be placed inside other items 
     > The bag contains the following items: bat, cap and glove.
     ````
@@ -67,7 +67,6 @@ You need to take the bag that is in the player's room and when you get to the ba
 #### How to execute the game:
 To get started, you need to download the zip file with the game release.
 After that:
-
 ###### En Windows:
 - Without need for external programs:
   - Running the file Zork_TestUPC.exe that is inside the Executable folder
@@ -77,7 +76,8 @@ After that:
   3. Run the game by going to Debug > Start without debugging.
 
 #### Gameplay:
-~~Poner aqui link a videos jugando~~
+###### Click in the image to see gameplay:
+[![Gameplays ZORK](https://img.youtube.com/vi/Mf22HYL2YVo/0.jpg)](https://www.youtube.com/watch?v=Mf22HYL2YVo)
 
 ### Enjoy playing the game!
 
