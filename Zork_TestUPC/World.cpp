@@ -127,7 +127,7 @@ void World::showHelpComands()
 	std::cout << "- ATTACK" << " : " << "It allows us to make an attack if the player has an object for it and if we can do it." << "\n";
 	std::cout << "- INVENTORY" << " : " << "We see all the objects that the player has stored." << "\n";
 	std::cout << "- CLEAR" << " : " << "We cleared the command terminal. We can consult all of the above, if we upload the scroll." << "\n";
-	std::cout << "- QUIT" << " : " << "Salimos del juego." << "\n";
+	std::cout << "- QUIT" << " : " << "Exit game." << "\n";
 }
 
 // Method that returns the player's current room
