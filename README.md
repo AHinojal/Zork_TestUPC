@@ -31,9 +31,8 @@ You need to take the bag that is in the player's room and when you get to the ba
 #### Map:
 ![alt Map](https://github.com/AHinojal/Zork_TestUPC/blob/master/Images/map.png?raw=true)
 
-#### Como he cumplido las peticiones del enunciado:
+#### How I have implemented the requests of the statement::
 - The code is created on ​Visual Studio 2017 Community​ with minimal level 3 warnings. 
-![alt Compilation](https://github.com/AHinojal/Zork_TestUPC/blob/master/Images/compilation.png?raw=true)
 ![alt List Errors](https://github.com/AHinojal/Zork_TestUPC/blob/master/Images/listErrors.png?raw=true)
 - The game does not crash on the main player path. 
   > CHECK! With the gameplays!
