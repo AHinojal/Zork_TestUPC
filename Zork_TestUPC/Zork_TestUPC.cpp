@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <string>
-#include "world.h"
+#include "World.h"
 #include "Zork_TestUPC.h"
 
 using namespace std;
