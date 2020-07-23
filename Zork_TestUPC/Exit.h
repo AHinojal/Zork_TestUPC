@@ -5,7 +5,7 @@
 #include <vector>
 
 enum DirectionType {
-	NORTE, SUR, ESTE, OESTE
+	NORTH, SOUTH, EAST, WEST
 };
 class Exit : public Entity
 {

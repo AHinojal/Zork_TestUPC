@@ -12,15 +12,15 @@ World::World()
 {
 	// TODO: Inicializar todos los elementos de la partida aqui
 	// HABITACIONES
-	Room* porch = new Room("PORCHE", "Estas enfrente de la entrada de tu casa. A tu izquierda esta la casa de tu vecino Paco.\nPara entrar necesitas unas llaves. Casualmente saliste sin ellas y tendras que arreglartelas.\nEs posible que el vecino tenga una copia de ellas...");
-	Room* neighbourHouse = new Room("ENTRADA DE LA CASA DEL VECINO", "Estas en la entrada de la casa de tu vecino Paco.\nSu mujer se encuentra en el porche, sentada en una silla.\nA tu derecha, se encuentra tu casa.");
-	Room* hall = new Room("SALON", "Por fin estas en casa!! No hay ninguna luz encendida y escuchas un sonido, pero no sabes de donde proviene.\nSi quieres volver a la entrada, esta al sur. Puedes dirigirte tambien a tu izquierda, que esta la habitacion de tus padres o a la derecha, la cocina.\nAdemas, delante tuya tienes tu habitacion.");
-	Room* parentsBedroom = new Room("HABITACION DE TUS PADRES", "Te encuentras a tu madre ya dormida y a tu padre viendo la tele a un volumen altisimo.\nEl sonido que has escuchado en el salon podria proveenir de aqui...\nDebajo tienes el aseo y al oeste, volverias al salon.");
-	Room* playerBedroom = new Room("HABITACION DEL JUGADOR", "La habitacion esta hecha un desastre. Encima de la cama tienes los libros de clase y en el suelo, tienes tirada la mochila con el material de beisbol.\nSi quieres volver al salon, esta al sur. Al este, tienes el aseo.");
-	Room* bathroom = new Room("ASEO", "El aseo esta completamente vacio. No hay nada de utilidad.\nLa habitacion de tus padres la tienes al sur y la tuya, al oeste.");
-	Room* kitchen = new Room("COCINA", "Tus padres te han dejado la cena preparada en el plato. Inexplicablemente, te falta el cuchillo en la mesa.\nTambien te das cuenta que la puerta del sotano esta entreabierta. Para ir ahi, ve al sur.\nSi quieres volver al salon, dirigete hacia el este. Tambien puedes dirigirte a la terraza, la cual tienes enfrente.");
-	Room* garden = new Room("JARDIN", "La puesta estaba un poco abierta...\nEsta todo muy tranquilo. Rara vez hay robos en el vecindario.\nPero nunca se sabe...\nVuelve atras para regresar a la cocina.");
-	Room* basement = new Room("SOTANO", "Bajas las escaleras y por sorpresa, te encuentras a un ladron robando.\nParece que no te ha visto. Te toca enfrentarte a el.");
+	Room* porch = new Room("PORCH", "You're in front of your front door. On your left is your neighbor Paco's house.\nTo get in, you need a key. Incidentally, you came out without them and you'll have to manage.\nIt's possible that the neighbor has a copy of them...");
+	Room* neighbourHouse = new Room("NEIGHBOR'S HOUSE", "You're at the entrance of your neighbor Paco's house.\nHis wife is on the porch, sitting on a chair.\nTo your right, is your house.");
+	Room* hall = new Room("HALL", "You're finally home! There's no light on and you hear a sound, but you don't know where it's coming from.\nIf you want to go back to the entrance, go south. You can also go to your left, which is your parents' room, or to the right, the kitchen.\nAlso, in front of you is your room.");
+	Room* parentsBedroom = new Room("PARENTS' ROOM", "You find your mother already asleep and your father watching TV at a very high volume.\nThe sound you've heard in the hall could provide from here...\nIn front of you, you have the bathroom and to the east, you would return to the hall.");
+	Room* playerBedroom = new Room("PLAYER'S ROOM", "The room's a mess. On the floor, you've got your backpack with the baseball stuff on it.\nIf you want to go back to the hall, go to the south. To the west, you have the bathroom.");
+	Room* bathroom = new Room("BATHRROM", "The toilet is completely empty. There's nothing useful.\nYour parents' room is to the south and yours is to the west.");
+	Room* kitchen = new Room("KITCHEN", "Your parents left dinner on your plate. Inexplicably, the knife is missing from the table.\nYou also notice the basement door is ajar. To get there, go to the south.\nIf you want to go back to the hall, head east. You can also go to the garden, which is in front of you.");
+	Room* garden = new Room("GARDEN", "The door was a little open...\nIt's very quiet. There's rarely a burglary in the neighbourhood.\nBut you never know...\nGo back to the kitchen.");
+	Room* basement = new Room("BASEMENT", "You go downstairs and, by surprise, you find a thief stealing.\nHe doesn't seem to have seen you. It's your turn to face him.");
 	this->rooms.push_back(porch);
 	this->rooms.push_back(neighbourHouse);
 	this->rooms.push_back(hall);
@@ -32,38 +32,38 @@ World::World()
 	this->rooms.push_back(basement);
 
 	// ITEMS
-	Item* keysHouse = new Item("LLAVES", "Menos mal que los vecinos tenian una copia...", neighbourHouse);
-	Item* dinner = new Item("COMIDA", "Se nota que la cena se preparo hace horas, esta fria...", kitchen);
-	Item* baseballBat = new Item("BATE", "Ya tiene su tiempo, pero para protegerme en una emergencia, esta bien...", playerBedroom);
-	Item* baseballGlove = new Item("GUANTE", "Es el viejo guante de papa. Le tiene mucho aprecio, y aun asi me lo regalo...", playerBedroom);
-	Item* baseballCap = new Item("GORRA", "Me compre esta gorra de los New York Yankees cuando fui a ver uno de sus partidos...", playerBedroom);
+	Item* keysHouse = new Item("KEYS", "Luckily, the neighbors had a copy...", neighbourHouse);
+	Item* dinner = new Item("DINNER", "You can tell that dinner was prepared hours ago, it's cold...", kitchen);
+	Item* baseballBat = new Item("BAT", "Is old enough, but to protect me in an emergency, it's okay...", playerBedroom);
+	Item* baseballGlove = new Item("GLOVE", "It's Dad's old glove. He's very fond of it, and yet he gave it to me...", playerBedroom);
+	Item* baseballCap = new Item("CAP", "I bought this New York Yankees' cap when I went to see one of their games...", playerBedroom);
 	this->items.push_back(keysHouse);
 	this->items.push_back(dinner);
 	list<Entity*> itemsBaseballBag = {};
 	itemsBaseballBag.push_back(baseballBat);
 	itemsBaseballBag.push_back(baseballGlove);
 	itemsBaseballBag.push_back(baseballCap);
-	Item* baseballBag = new Item("MOCHILA", "Contiene los siguientes items dentro: BATE, GUANTE, GORRA", itemsBaseballBag, playerBedroom);
+	Item* baseballBag = new Item("BAG", "Contains the following items in: BAT, GLOVE, CAP", itemsBaseballBag, playerBedroom);
 	this->items.push_back(baseballBag);
 
 	// MOVIMIENTOS
-	Exit* move1 = new Exit("NORTE", "", NORTE, porch, hall, true, keysHouse);
-	Exit* move3 = new Exit("SUR", "", SUR, hall, porch, false, NULL);
-	Exit* move2 = new Exit("OESTE", "", OESTE, porch, neighbourHouse, false, NULL);
-	Exit* move4 = new Exit("ESTE", "", ESTE, neighbourHouse, porch, false, NULL);
-	Exit* move5 = new Exit("OESTE", "", OESTE, hall, parentsBedroom, false, NULL);
-	Exit* move6 = new Exit("ESTE", "", ESTE, parentsBedroom, hall, false, NULL);
-	Exit* move7 = new Exit("NORTE", "", NORTE, hall, playerBedroom, false, NULL);
-	Exit* move8 = new Exit("SUR", "", SUR, playerBedroom, hall, false, NULL);
-	Exit* move9 = new Exit("ESTE", "", ESTE, hall, kitchen, false, NULL);
-	Exit* move10 = new Exit("OESTE", "", OESTE, kitchen, hall, false, NULL);
-	Exit* move11 = new Exit("NORTE", "", NORTE, parentsBedroom, bathroom, false, NULL);
-	Exit* move12 = new Exit("SUR", "", SUR, bathroom, parentsBedroom, false, NULL);
-	Exit* move13 = new Exit("ESTE", "", ESTE, bathroom, playerBedroom, false, NULL);
-	Exit* move14 = new Exit("OESTE", "", OESTE, playerBedroom, bathroom, false, NULL);
-	Exit* move15 = new Exit("SUR", "", SUR, garden, kitchen, false, NULL);
-	Exit* move16 = new Exit("NORTE", "", NORTE, kitchen, garden, false, NULL);
-	Exit* move17 = new Exit("SUR", "", SUR, kitchen, basement, false, NULL);
+	Exit* move1 = new Exit("NORTH", "", NORTH, porch, hall, true, keysHouse);
+	Exit* move3 = new Exit("SOUTH", "", SOUTH, hall, porch, false, NULL);
+	Exit* move2 = new Exit("WEST", "", WEST, porch, neighbourHouse, false, NULL);
+	Exit* move4 = new Exit("EAST", "", EAST, neighbourHouse, porch, false, NULL);
+	Exit* move5 = new Exit("WEST", "", WEST, hall, parentsBedroom, false, NULL);
+	Exit* move6 = new Exit("EAST", "", EAST, parentsBedroom, hall, false, NULL);
+	Exit* move7 = new Exit("NORTH", "", NORTH, hall, playerBedroom, false, NULL);
+	Exit* move8 = new Exit("SOUTH", "", SOUTH, playerBedroom, hall, false, NULL);
+	Exit* move9 = new Exit("EAST", "", EAST, hall, kitchen, false, NULL);
+	Exit* move10 = new Exit("WEST", "", WEST, kitchen, hall, false, NULL);
+	Exit* move11 = new Exit("NORTH", "", NORTH, parentsBedroom, bathroom, false, NULL);
+	Exit* move12 = new Exit("SOUTH", "", SOUTH, bathroom, parentsBedroom, false, NULL);
+	Exit* move13 = new Exit("EAST", "", EAST, bathroom, playerBedroom, false, NULL);
+	Exit* move14 = new Exit("WEST", "", WEST, playerBedroom, bathroom, false, NULL);
+	Exit* move15 = new Exit("SOUTH", "", SOUTH, garden, kitchen, false, NULL);
+	Exit* move16 = new Exit("NORTH", "", NORTH, kitchen, garden, false, NULL);
+	Exit* move17 = new Exit("SOUTH", "", SOUTH, kitchen, basement, false, NULL);
 	this->exits.push_back(move1);
 	this->exits.push_back(move2);
 	this->exits.push_back(move3);
@@ -84,9 +84,9 @@ World::World()
 
 	// PERSONAJES
 	// NPCs
-	Npc* neighbour = new Npc("LOLA", "Que alto estas, bonito! Toma! Coge las llaves de tu casa!", neighbourHouse);
-	Npc* dad = new Npc("PAPA", "Que haces a estas horas despierto, hijo?", parentsBedroom);
-	Npc* thief = new Npc("THIEF", "Esto no deberia estar pasando...", basement);
+	Npc* neighbour = new Npc("LILY", "How tall you are, pretty boy! Here! Take your house keys!", neighbourHouse);
+	Npc* dad = new Npc("DAD", "What are you doing up at this hour, son?", parentsBedroom);
+	Npc* thief = new Npc("THIEF", "This shouldn't be happening...", basement);
 	this->npcs.push_back(neighbour);
 	this->npcs.push_back(dad);
 	this->npcs.push_back(thief);
@@ -98,7 +98,7 @@ World::World()
 	// Seteo introduccion del nombre del jugador aqui
 	this->player = new Player(namePlayer, "Let's start the adventure!", porch);
 	std::cout << "Welcome, " << this->player->getName() << "! " << this->player->getDescription() << "\n\n";
-	std::cout << "NOTE: If you want help, put command HELP to open this menu." << "\n\n";
+	std::cout << "NOTE: If you want help, use the command HELP to open this menu." << "\n\n";
 	this->player->getLocation()->showInfo();
 	std::cout << "\n";
 }
@@ -110,16 +110,16 @@ World::~World()
 
 void World::showHelpComands()
 {
-	std::cout << "COMANDOS:" << "\n";
-	std::cout << "- HELP" << " : " << "Abrimos el menu de ayuda." << "\n";
-	std::cout << "- VER" << " : " << "Sale la descripcion de la sala actual donde se encuentra el jugador." << "\n";
-	std::cout << "- COGER" << " : " << "Guardamos item en el inventario, si se puede." << "\n";
-	std::cout << "- SOLTAR" << " : " << "Eliminamos item del inventario, si se puede." << "\n";
-	std::cout << "- IR [COORDENADA]" << " : " << "Indicamos el movimiento del jugador. Tipo de coordenadas: NORTE, SUR, ESTE, OESTE." << "\n";
-	std::cout << "- DIALOGAR" << " : " << "Hacemos interaccion entre NPC y jugador." << "\n";
-	std::cout << "- ATACAR" << " : " << "Nos permite realizar un ataque si el jugador tiene un objeto para ello y si podemos hacerlo." << "\n";
-	std::cout << "- INVENTARIO" << " : " << "Vemos todos los objetos que tiene almacenados el jugador." << "\n";
-	std::cout << "- LIMPIAR" << " : " << "Limpiamos el terminal de comandos. Podemos consultar todo lo anterior, si subimos el scroll." << "\n";
+	std::cout << "COMMANDS:" << "\n";
+	std::cout << "- HELP" << " : " << "We opened the help menu." << "\n";
+	std::cout << "- ROOM" << " : " << "The description of the current room where the player is located is displayed." << "\n";
+	std::cout << "- TAKE" << " : " << "We keep items in inventory, if possible." << "\n";
+	std::cout << "- DROP" << " : " << "We remove items from the inventory, if possible." << "\n";
+	std::cout << "- MOVE [COORDENATE]" << " : " << "We indicate the player's movement. Type of coordinates: NORTH, SOUTH, EAST, WEST." << "\n";
+	std::cout << "- TALK" << " : " << "We do interaction between NPC and player." << "\n";
+	std::cout << "- ATTACK" << " : " << "It allows us to make an attack if the player has an object for it and if we can do it." << "\n";
+	std::cout << "- INVENTORY" << " : " << "We see all the objects that the player has stored." << "\n";
+	std::cout << "- CLEAR" << " : " << "We cleared the command terminal. We can consult all of the above, if we upload the scroll." << "\n";
 	std::cout << "- QUIT" << " : " << "Salimos del juego." << "\n";
 }
 
@@ -147,7 +147,7 @@ bool World::tryChangeRoom(string direction)
 				}
 			}
 			if (!isChangedRoom) {
-				std::cout << "CERRADO! No tienes el objeto necesario para ir a la siguiente habitacion." << "\n";
+				std::cout << "CLOSED! You don't have the necessary object to go to the next room." << "\n";
 			}
 		}
 	}
@@ -179,7 +179,7 @@ bool World::takeItem(string nameItem)
 void World::showDialogNpc()
 {
 	string actualLocationPlayer = this->player->getLocation()->getName();
-	string dialogText = "No hay nadie con quien dialogar.";
+	string dialogText = "There's no one to talk to.";
 	for (int i = 0; i < npcs.size(); i++) {
 		if (actualLocationPlayer == npcs[i]->getLocation()->getName()) {
 			dialogText = npcs[i]->showDialog();

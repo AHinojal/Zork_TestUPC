@@ -43,5 +43,5 @@ void Entity::setDescription(string description)
 
 void Entity::showInfo()
 {
-	std::cout << "Has recogido el objeto " << this->name << "! *" << this->description << "*\n";
+	std::cout << "You've picked up the object " << this->name << "! *" << this->description << "*\n";
 }

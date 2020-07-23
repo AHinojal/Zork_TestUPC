@@ -55,49 +55,49 @@ int main()
 				if (command == "HELP") {
 					zorkWorld.showHelpComands();
 				}
-				else if (command == "LIMPIAR") {
+				else if (command == "CLEAR") {
 					std::cout << "\n\n\n\n\n\n\n\n\n\n";
 				}
-				else if (command == "VER") {
+				else if (command == "ROOM") {
 					zorkWorld.showActualRoom();
 				}
 				else if (command == "QUIT") {
 					exit(0);
 				}
-				else if (command == "DIALOGAR") {
+				else if (command == "TALK") {
 					zorkWorld.showDialogNpc();
-					if (zorkWorld.player->getLocation()->getName() == "SOTANO") {
-						std::cout << "El ladron te ha herido de gravedad con el cuchillo robado. HAS PERDIDO! :(" << "\n";
+					if (zorkWorld.player->getLocation()->getName() == "BASEMENT") {
+						std::cout << "The thief has seriously injured you with the stolen knife. YOU'VE LOST! :(" << "\n";
 						endGame = true;
 					}
 				}
-				else if (command == "ATACAR") {
-					if (zorkWorld.player->getLocation()->getName() == "SOTANO") {
+				else if (command == "ATTACK") {
+					if (zorkWorld.player->getLocation()->getName() == "BASEMENT") {
 						bool canAttack = false;
 						vector<Item*> actualInventoryPlayer = zorkWorld.player->getInventory();
 						for (int i = 0; i < actualInventoryPlayer.size(); i++) {
-							if (actualInventoryPlayer[i]->getName() == "MOCHILA") {
+							if (actualInventoryPlayer[i]->getName() == "BAG") {
 								canAttack = true;
 							}
 						}
 						if (!canAttack) {
 							zorkWorld.showDialogNpc();
 						}
-						string message = canAttack ? "Has conseguido detener al ladron con el bate que tenias en la mochila! HAS GANADO! ENHORABUENA!" : "No tienes nada con que atacar y el ladron te ha herido...HAS PERDIDO! :(";
+						string message = canAttack ? "You managed to stop the thief with the bat you had in your backpack! YOU'VE WON! CONGRATULATIONS!" : "You have nothing to attack with and the thief has hurt you...YOU HAVE LOST! :(";
 						std::cout << message << "\n";
 						endGame = true;
 					}
 					else {
-						std::cout << "No puedes usar este comando en estos momentos" << "\n";
+						std::cout << "You can't use this command right now." << "\n";
 					}
 				}
-				else if (command == "INVENTARIO") {
-					std::cout << "Inventario del jugador: ";
+				else if (command == "INVENTORY") {
+					std::cout << "Player's Inventory: ";
 					zorkWorld.player->showInventary();
 					std::cout << "\n";
 				}
-				else if (command == "COGER") {
-					std::cout << "Que objeto quieres coger?" << "\n\n";
+				else if (command == "TAKE") {
+					std::cout << "What item do you want to take?" << "\n\n";
 					string object;
 					std::cout << ">";
 					std::getline(std::cin, object);
@@ -105,11 +105,11 @@ int main()
 					std::cout << "\n";
 					// TODO: Tendremos que crear un metodo en el jugador compare si esta en la habitacion adecuada y lo que coge esta en la lista de items
 					bool canTake = zorkWorld.takeItem(object);
-					string message = (canTake) ? "Se ha metido en tu inventario." : "El objeto no esta en la habitacion o ya lo tienes en el inventario.";
+					string message = (canTake) ? "He's gotten into your inventory." : "The item is either not in the room or already in the inventory.";
 					std::cout << message << "\n";
 				}
-				else if (command == "SOLTAR") {
-					std::cout << "Que objeto quieres soltar?" << "\n\n";
+				else if (command == "DROP") {
+					std::cout << "What object do you want to drop?" << "\n\n";
 					string object;
 					std::cout << ">";
 					std::getline(std::cin, object);
@@ -117,11 +117,11 @@ int main()
 					std::cout << "\n";
 					// Tendremos que crear un metodo en el jugador mire su inventario y si tiene el objeto, eliminarlo de la lista
 					bool canThrow = zorkWorld.player->throwItem(object);
-					string message = (canThrow) ? "El objeto ha sido eliminado del inventario." : "No tienes ese objeto en el inventario.";
+					string message = (canThrow) ? "The item has been removed from inventory." : "You don't have that item in your inventory.";
 					std::cout << message << "\n";
 				}
 				else {
-					std::cout << "Este comando no es valido." << "\n";
+					std::cout << "This command is invalid." << "\n";
 				}
 				break;
 			// Si son dos palabras -> direccion
@@ -130,28 +130,28 @@ int main()
 				goWord = command.substr(0, 2);
 				direction = command.substr(3, command.length() - 1);
 
-				if (goWord == "IR") {
+				if (goWord == "MOVE") {
 					// Podemos ir a la direccion que queramos
-					if (direction == "NORTE" || direction == "SUR" || direction == "ESTE" || direction == "OESTE") {
+					if (direction == "NORTH" || direction == "SOUTH" || direction == "EAST" || direction == "WEST") {
 						// TODO: Habra que comprobar si la habitacion puede ir esa direccion
 						bool changeRoom = zorkWorld.tryChangeRoom(direction);
 						if (changeRoom) {
 							zorkWorld.player->getLocation()->showInfo();
 						}
 						else {
-							std::cout << "No puedes moverte en esa direccion" << "\n";
+							std::cout << "You can't move to that coordinate." << "\n";
 						}
 					}
 					else {
-						std::cout << "Esta direccion no es valida." << "\n";
+						std::cout << "The input coordinate is not valid." << "\n";
 					}
 				}
 				else {
-					std::cout << "Este comando no es valido." << "\n";
+					std::cout << "This command is invalid." << "\n";
 				}
 				break;
 			default:
-				std::cout << "Este comando no es valido." << "\n";
+				std::cout << "This command is invalid." << "\n";
 				break;
 		}
 

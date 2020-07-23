@@ -47,15 +47,15 @@ void Item::setIsAlreadyTaken(bool isTaken)
 
 void Item::showInfo()
 {
-	std::cout << "Has recogido el objeto " << name << "! *" << description << "*\n";
+	std::cout << "You've picked up the object " << name << "! *" << description << "*\n";
 	if (contains.size() > 0) {
-		std::cout << "Contiene dentro:" << "\n";
+		std::cout << "Contains inside:" << "\n";
 		list<Entity*>::iterator it;
 		for (it = contains.begin(); it != contains.end(); it++)
 		{
 			Entity* item = *it;
 			item->showInfo();
 		}
-		std::cout << "*NOTA*: Los objetos que estan dentro de un item NO se pueden tirar. Tienes que tirar el objeto contenedor!" << "\n";
+		std::cout << "*NOTE*: Objects within an item may NOT be thrown away. You have to throw away the container object!" << "\n";
 	}
 }
