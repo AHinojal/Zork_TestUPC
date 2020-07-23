@@ -29,3 +29,9 @@
 # Executables
 *.out
 *.app
+
+# External Folders
+*.vs
+*x64
+Zork_TestUPC/Zork_TestUPC.vcxproj.user
+Zork_TestUPC/x64
