@@ -10,6 +10,7 @@ Npc::~Npc()
 {
 }
 
+// Method that return a string with the NPC's dialog
 string Npc::showDialog()
 {
 	return "*" + name + ": " + description;

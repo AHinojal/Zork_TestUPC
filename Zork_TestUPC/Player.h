@@ -8,6 +8,7 @@ class Player : public Creature
 	public:
 		vector<Item*> inventory;
 
+		// Constructors & destructor
 		Player(string name, string description, Room* location);
 		~Player();
 

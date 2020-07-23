@@ -13,6 +13,7 @@ Exit::~Exit()
 {
 }
 
+// Getters
 Room * Exit::getOrigin()
 {
 	return this->origin;

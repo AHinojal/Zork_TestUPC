@@ -1,3 +1,5 @@
+// World.cpp : This file contains everything relevant to the game's world.
+
 #include "World.h"
 #include "Room.h"
 #include "Player.h"
@@ -10,8 +12,8 @@ using namespace std;
 
 World::World()
 {
-	// TODO: Inicializar todos los elementos de la partida aqui
-	// HABITACIONES
+	// Initialize all game elements here
+	// ROOMS
 	Room* porch = new Room("PORCH", "You're in front of your front door. On your left is your neighbor Paco's house.\nTo get in, you need a key. Incidentally, you came out without them and you'll have to manage.\nIt's possible that the neighbor has a copy of them...");
 	Room* neighbourHouse = new Room("NEIGHBOR'S HOUSE", "You're at the entrance of your neighbor Paco's house.\nHis wife is on the porch, sitting on a chair.\nTo your right, is your house.");
 	Room* hall = new Room("HALL", "You're finally home! There's no light on and you hear a sound, but you don't know where it's coming from.\nIf you want to go back to the entrance, go south. You can also go to your left, which is your parents' room, or to the right, the kitchen.\nAlso, in front of you is your room.");
@@ -46,7 +48,7 @@ World::World()
 	Item* baseballBag = new Item("BAG", "Contains the following items in: BAT, GLOVE, CAP", itemsBaseballBag, playerBedroom);
 	this->items.push_back(baseballBag);
 
-	// MOVIMIENTOS
+	// MOVEMENTS / EXITS
 	Exit* move1 = new Exit("NORTH", "", NORTH, porch, hall, true, keysHouse);
 	Exit* move3 = new Exit("SOUTH", "", SOUTH, hall, porch, false, NULL);
 	Exit* move2 = new Exit("WEST", "", WEST, porch, neighbourHouse, false, NULL);
@@ -82,7 +84,7 @@ World::World()
 	this->exits.push_back(move16);
 	this->exits.push_back(move17);
 
-	// PERSONAJES
+	// CREATURES
 	// NPCs
 	Npc* neighbour = new Npc("LILY", "How tall you are, pretty boy! Here! Take your house keys!", neighbourHouse);
 	Npc* dad = new Npc("DAD", "What are you doing up at this hour, son?", parentsBedroom);
@@ -95,7 +97,7 @@ World::World()
 	std::cout << "Give me your name, hero/heroin!\n" << ">";
 	std::getline(std::cin, namePlayer);
 	std::cout << "\n";
-	// Seteo introduccion del nombre del jugador aqui
+	// Set the player's name here
 	this->player = new Player(namePlayer, "Let's start the adventure!", porch);
 	std::cout << "Welcome, " << this->player->getName() << "! " << this->player->getDescription() << "\n\n";
 	std::cout << "NOTE: If you want help, use the command HELP to open this menu." << "\n\n";
@@ -105,9 +107,14 @@ World::World()
 
 World::~World()
 {
-	
+	// Destroy World
+	items.clear();
+	rooms.clear();
+	exits.clear();
+	npcs.clear();
 }
 
+// Method that when called, shows all the game commands
 void World::showHelpComands()
 {
 	std::cout << "COMMANDS:" << "\n";
@@ -123,22 +130,24 @@ void World::showHelpComands()
 	std::cout << "- QUIT" << " : " << "Salimos del juego." << "\n";
 }
 
+// Method that returns the player's current room
 void World::showActualRoom()
 {
 	this->player->getLocation()->showInfo();
 }
 
+// Method that when called, tries to see if it is possible the change of room by the player. Return a Boolean
 bool World::tryChangeRoom(string direction)
 {
 	bool isChangedRoom = false;
 	Exit* move = getPossibleDestination(direction);
 	if (move != NULL) {
-		// Comprobamos si la habitacion necesita llave
+		// We check if the room needs a key
 		if (!move->getIsLocked()) {
 			this->player->setLocation(move->getDestination());
 			isChangedRoom = true;
 		} else {
-			// Comprobamos si tenemos la llave en el inventario
+			// We're checking to see if we have the key in inventory
 			vector<Item*> actualInventory = this->player->getInventory();
 			for (int i = 0; i < actualInventory.size(); i++) {
 				if (actualInventory[i]->getName() == move->getkeyDoor()->getName()) {
@@ -146,6 +155,7 @@ bool World::tryChangeRoom(string direction)
 					isChangedRoom = true;
 				}
 			}
+			// If not possible, we show this message
 			if (!isChangedRoom) {
 				std::cout << "CLOSED! You don't have the necessary object to go to the next room." << "\n";
 			}
@@ -154,19 +164,20 @@ bool World::tryChangeRoom(string direction)
 	return isChangedRoom;
 }
 
+// Method that when called, tries to see if it is possible to take the object that is passed to us by command. Returns a boolean
 bool World::takeItem(string nameItem)
 {
 	bool result = false;
 	string actualRoom = this->player->getLocation()->getName();
 	for (int i = 0; i < items.size(); i++) {
-		// Primero comprobamos el nombre del objeto que queremos
+		// First we check the name of the object we want
 		if (nameItem == items[i]->getName()) {
-			// Despues comprobamos si el jugador y el objeto estan en la misma sala
+			// Then we check if the player and the object are in the same room
 			if (actualRoom == items[i]->getLocation()->getName()) {
 				if (!items[i]->getIsAlreadyTaken()) {
 					items[i]->setIsAlreadyTaken(true);
 					this->player->inventory.push_back(items[i]);
-					// Comentario cogiendo el objeto
+					// We show message by taking the object
 					items[i]->showInfo();
 					result = true;
 				}
@@ -176,11 +187,15 @@ bool World::takeItem(string nameItem)
 	return result;
 }
 
+// Method that when called, shows the dialogue that the NPC's character has
 void World::showDialogNpc()
 {
+	// We check which room the user is in 
 	string actualLocationPlayer = this->player->getLocation()->getName();
+	// Default message
 	string dialogText = "There's no one to talk to.";
 	for (int i = 0; i < npcs.size(); i++) {
+		// If there is a character with dialogue, we change the content of the variable with the NPC's message
 		if (actualLocationPlayer == npcs[i]->getLocation()->getName()) {
 			dialogText = npcs[i]->showDialog();
 		}
@@ -188,11 +203,12 @@ void World::showDialogNpc()
 	std::cout << dialogText << "\n";
 }
 
+// Method that looks for a possible movement from the room the user is in with the address set in command. Returns the movement if it exists
 Exit* World::getPossibleDestination(string direction)
 {
 	Exit* possibleDestination = NULL;
 	string actualRoom = this->player->getLocation()->getName();
-	// Miramos si hay algun posible movimiento desde la actual habitacion y en la direccion selecciona
+	// We see if there is any possible movement from the current room and in the direction you select
 	for (int i = 0; i < this->exits.size(); i++) {
 		if (exits[i]->getOrigin()->getName() == actualRoom && exits[i]->getName() == direction) {
 			possibleDestination = exits[i];

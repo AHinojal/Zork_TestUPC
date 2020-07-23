@@ -16,6 +16,7 @@ Entity::Entity(string name, string description)
 
 }
 
+// Getters & Setters
 string Entity::getName()
 {
 	return this->name;
@@ -41,6 +42,8 @@ void Entity::setDescription(string description)
 	this->description = description;
 }
 
+// Method that when called shows the information of the item when player take an object
+// It's a virtual method, since in the daughter classes, we change their behavior
 void Entity::showInfo()
 {
 	std::cout << "You've picked up the object " << this->name << "! *" << this->description << "*\n";

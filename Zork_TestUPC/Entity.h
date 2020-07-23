@@ -19,6 +19,7 @@ class Entity
 		string description;
 		list<Entity*> contains;
 
+		// Constructors & destructor
 		Entity(string name, string description, list<Entity*> contains);
 		Entity(string name, string description);
 
@@ -27,6 +28,6 @@ class Entity
 		string getDescription();
 		list<Entity*> getContains();
 		void setDescription(string description);
-		void showInfo();
+		virtual void showInfo();
 };
 

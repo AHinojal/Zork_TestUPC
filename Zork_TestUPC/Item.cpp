@@ -20,6 +20,7 @@ Item::~Item()
 {
 }
 
+// Getters & setters
 string Item::getName()
 {
 	return name;
@@ -45,9 +46,11 @@ void Item::setIsAlreadyTaken(bool isTaken)
 	this->isAlreadyTaken = isTaken;
 }
 
+// Method that when called shows the information of the item when player take an object
 void Item::showInfo()
 {
 	std::cout << "You've picked up the object " << name << "! *" << description << "*\n";
+	// We see if the item contains items within
 	if (contains.size() > 0) {
 		std::cout << "Contains inside:" << "\n";
 		list<Entity*>::iterator it;

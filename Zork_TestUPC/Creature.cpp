@@ -10,6 +10,7 @@ Creature::~Creature()
 {
 }
 
+// Getter & setter of location
 Room* Creature::getLocation()
 {
 	return this->location;

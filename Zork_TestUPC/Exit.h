@@ -16,6 +16,7 @@ class Exit : public Entity
 		bool isLocked;
 		Item* keyDoor;
 
+		// Constructors & destructor
 		Exit(string name, string description, DirectionType direction, Room* origin, Room* destination, bool isLocked, Item* keyDoor);
 		~Exit();
 

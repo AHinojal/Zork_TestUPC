@@ -8,6 +8,7 @@ class Item : public Entity
 		Room* location;
 		bool isAlreadyTaken;
 
+		// Constructors & destructor
 		Item(string name, string description, Room* location);
 		Item(string name, string description, list<Entity*> contains, Room* location);
 		~Item();

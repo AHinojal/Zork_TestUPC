@@ -14,8 +14,9 @@ class World {
 		vector<Npc*> npcs;
 		Player* player;
 
-		World(); // Constructor por defecto
-		~World(); // Destructor
+		// Constructors & destructor
+		World();
+		~World();
 
 		void showHelpComands();
 		void showActualRoom();
