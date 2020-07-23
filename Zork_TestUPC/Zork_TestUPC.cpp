@@ -127,8 +127,8 @@ int main()
 			// Si son dos palabras -> direccion
 			case 2:
 				// Comprobamos si la entrada de dos palabras es la direccion que queremos ir
-				goWord = command.substr(0, 2);
-				direction = command.substr(3, command.length() - 1);
+				goWord = command.substr(0, 4);
+				direction = command.substr(5, command.length() - 1);
 
 				if (goWord == "MOVE") {
 					// Podemos ir a la direccion que queramos
